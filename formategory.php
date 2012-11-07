@@ -14,11 +14,7 @@ define( 'FORMATEGORY_VERSION', '2.0' );
 class FORMATEGORY {
 	static function setup() {
 		$installed_version = get_option( 'formategory_version' );
-		
-		if ( FORMATEGORY_VERSION != $installed_version ) {
-			update_option( 'formategory_version', FORMATEGORY_VERSION );
-		}
-		
+
 		load_plugin_textdomain( 'formategory', false, dirname( __FILE__ ) . '/languages' );
 	}
 	
@@ -51,6 +47,13 @@ class FORMATEGORY {
 	}
 	
 	static function admin_init() {
+
+		$installed_version = get_option( 'formategory_version' );
+
+		if ( FORMATEGORY_VERSION != $installed_version ) {
+			update_option( 'formategory_version', FORMATEGORY_VERSION );
+		}
+
 		add_filter( 'the_title', array( 'FORMATEGORY', 'template_title' ), 1, 2 );
 		
 		add_action( 'admin_enqueue_scripts', array( 'FORMATEGORY', 'admin_enqueue_scripts' ) );
