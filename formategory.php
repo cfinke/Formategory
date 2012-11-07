@@ -12,13 +12,11 @@ Author URI: http://www.chrisfinke.com/
 define( 'FORMATEGORY_VERSION', '2.0' );
 
 class FORMATEGORY {
-	static function setup() {
-		$installed_version = get_option( 'formategory_version' );
 
-		load_plugin_textdomain( 'formategory', false, dirname( __FILE__ ) . '/languages' );
-	}
-	
 	static function init() {
+
+		load_plugin_textdomain( 'formategory', false, dirname( __FILE__ ) . "/languages/" );
+
 		register_post_type( 'formategory_template',
 			array(
 				'label' => __( 'Category Templates', 'formategory' ),
@@ -134,7 +132,6 @@ class FORMATEGORY {
 	}
 }
 
-add_action( 'plugins_loaded', array( 'FORMATEGORY', 'setup' ) );
 add_action( 'init', array( 'FORMATEGORY', 'init' ) );
 add_action( 'admin_init', array( 'FORMATEGORY', 'admin_init' ) );
 
