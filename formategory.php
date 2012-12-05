@@ -81,16 +81,35 @@ class FORMATEGORY {
 	static function format( $content ) {
 		global $post, $wpdb;
 
+		static $templates;
+		if ( is_null( $templates ) ) {
+			$templates_query = new WP_Query( array( 'posts_per_page' => 50, 'post_type' => 'formategory_template', 'suppress_filters' => true, 'update_meta_cache' => false, 'no_found_rows' => true ) );
+			$templates = array();
+			if ( ! empty( $templates_query->posts ) ) {
+				foreach( $templates_query->posts as $template ) {
+					$template_obj = new stdClass;
+					$template_obj->ID = $template->ID;
+					$template_obj->post_content = $template->post_content;
+					$template_obj->categories = wp_list_pluck( get_the_terms( $template->ID, 'category' ), 'term_id' );
+					$templates[] = $template_obj;
+				}
+			}
+		}
+
 		$post_terms = wp_list_pluck( get_the_terms( $post->ID, 'category' ), 'term_id' );
 		
 		if ( ! empty( $post_terms ) ) {
 			$templates_applied = array();
 			
 			foreach ( $post_terms as $term_id ) {
-				$templates = get_posts( array( 'numberposts' => -1, 'category' => $term_id, 'post_type' => 'formategory_template', 'suppress_filters' => true ) );
+				$templates_to_apply = array();
+				foreach( $templates as $template ) {
+					if ( in_array( $term_id, $template->categories ) )
+						$templates_to_apply[] = $template;
+				}
 				
-				if ( ! empty( $templates ) ) {
-					foreach ( $templates as $template ) {
+				if ( ! empty( $templates_to_apply ) ) {
+					foreach ( $templates_to_apply as $template ) {
 						if ( ! isset( $templates_applied[$template->ID] ) ) {
 							$templates_applied[$template->ID] = true;
 							
