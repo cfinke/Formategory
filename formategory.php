@@ -80,9 +80,8 @@ class FORMATEGORY {
 	
 	static function format( $content ) {
 		global $post, $wpdb;
-		
-		$post_terms = wp_get_post_terms( $post->ID, 'category', array( 'fields' => 'ids' ) );
-		// $post_terms = array_merge( $post_terms, wp_get_post_terms( $post->ID, 'post_tag', array( 'fields' => 'ids' ) ) );
+
+		$post_terms = wp_list_pluck( get_the_terms( $post->ID, 'category' ), 'term_id' );
 		
 		if ( ! empty( $post_terms ) ) {
 			$templates_applied = array();
