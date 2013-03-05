@@ -95,27 +95,33 @@ class FORMATEGORY {
 				}
 			}
 		}
-
-		$post_terms = wp_list_pluck( get_the_terms( $post->ID, 'category' ), 'term_id' );
 		
-		if ( ! empty( $post_terms ) ) {
-			$templates_applied = array();
+		$post_categories = get_the_terms( $post->ID, 'category' );
+		
+		if ( $post_categories && ! is_wp_error( $post_categories ) ) {
+			$post_category_ids = wp_list_pluck( $post_categories, 'term_id' );
+		
+			if ( ! empty( $post_category_ids ) ) {
+				$templates_applied = array();
 			
-			foreach ( $post_terms as $term_id ) {
-				$templates_to_apply = array();
-				foreach( $templates as $template ) {
-					if ( in_array( $term_id, $template->categories ) )
-						$templates_to_apply[] = $template;
-				}
+				foreach ( $post_category_ids as $term_id ) {
+					$templates_to_apply = array();
+					foreach( $templates as $template ) {
+						if ( $template->categories ) {
+							if ( in_array( $term_id, $template->categories ) )
+								$templates_to_apply[] = $template;
+						}
+					}
 				
-				if ( ! empty( $templates_to_apply ) ) {
-					foreach ( $templates_to_apply as $template ) {
-						if ( ! isset( $templates_applied[$template->ID] ) ) {
-							$templates_applied[$template->ID] = true;
+					if ( ! empty( $templates_to_apply ) ) {
+						foreach ( $templates_to_apply as $template ) {
+							if ( ! isset( $templates_applied[$template->ID] ) ) {
+								$templates_applied[$template->ID] = true;
 							
-							if ( $template->post_content ) {
-								$content = preg_replace( "/{{\s*the_content\s*}}/s", $content, $template->post_content );
-								$content = preg_replace( "/{{\s*the_title\s*}}/s", $post->post_title, $content );
+								if ( $template->post_content ) {
+									$content = preg_replace( "/{{\s*the_content\s*}}/s", $content, $template->post_content );
+									$content = preg_replace( "/{{\s*the_title\s*}}/s", $post->post_title, $content );
+								}
 							}
 						}
 					}
