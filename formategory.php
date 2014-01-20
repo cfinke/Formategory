@@ -7,6 +7,8 @@ Description: Formats posts based on their categories.
 Version: 3.0
 Author: Christopher Finke
 Author URI: http://www.chrisfinke.com/
+Domain Path: /languages/
+Text Domain: formategory
 */
 
 define( 'FORMATEGORY_VERSION', '2.0' );
@@ -15,7 +17,7 @@ class FORMATEGORY {
 
 	static function init() {
 
-		load_plugin_textdomain( 'formategory', false, dirname( __FILE__ ) . "/languages/" );
+		load_plugin_textdomain( 'formategory', false, dirname( plugin_basename( __FILE__ ) ) . "/languages/" );
 
 		register_post_type( 'formategory_template',
 			array(
