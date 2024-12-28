@@ -2,7 +2,7 @@
 Contributors: cfinke
 Tags: category, template, customization
 Requires at least: 3.6
-Tested up to: 4.9
+Tested up to: 6.7.1
 Stable tag: 3.1
 
 Formats posts based on their category.
