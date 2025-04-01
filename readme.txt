@@ -2,7 +2,7 @@
 Contributors: cfinke
 Tags: category, template, customization
 Requires at least: 3.6
-Tested up to: 6.7.1
+Tested up to: 6.7.2
 Stable tag: 3.1
 
 Formats posts based on their category.
@@ -20,3 +20,11 @@ The "Category Templates" page in your dashboard allows you to manage your templa
 1. The Formategory template management screen.
 2. An example Formategory template.
 3. A post customized by Formategory.
+
+== Changelog ==
+
+= 3.2 =
+*Release Date - 2025 April 1*
+
+* Fixed a bug preventing Formategory from working on a home page with a single post.
+* Fixed a bug preventing linebreaks in templates from being rendered properly.
