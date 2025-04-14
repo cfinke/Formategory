@@ -23,6 +23,11 @@ The "Category Templates" page in your dashboard allows you to manage your templa
 
 == Changelog ==
 
+= 3.3 =
+*Release Date - TBD*
+
+* Added support for {{ the_date }} placeholder
+
 = 3.2 =
 *Release Date - 2025 April 1*
 
