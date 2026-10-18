@@ -4,7 +4,7 @@
 Plugin Name: Formategory
 Plugin URI: http://www.chrisfinke.com/wordpress/plugins/formategory/
 Description: Formats posts based on their categories.
-Version: 3.3a1
+Version: 3.3a2
 Author: Christopher Finke
 Author URI: http://www.chrisfinke.com/
 Domain Path: /languages/
@@ -126,9 +126,9 @@ class FORMATEGORY {
 								$templates_applied[$template->ID] = true;
 
 								if ( $template->post_content ) {
-									$content = preg_replace( "/{{\s*the_content\s*}}/s", $content, $template->post_content );
-									$content = preg_replace( "/{{\s*the_title\s*}}/s", $post->post_title, $content );
-									$content = preg_replace( "/{{\s*the_date\s*}}/s", date( "F j, Y", strtotime( $post->post_date ) ), $content );
+									$content = self::replace_placeholder( 'the_content', $content, $template->post_content );
+									$content = self::replace_placeholder( 'the_title', $post->post_title, $content );
+									$content = self::replace_placeholder( 'the_date', date( "F j, Y", strtotime( $post->post_date ) ), $content );
 									$content = wpautop( $content );
 								}
 							}
@@ -139,6 +139,22 @@ class FORMATEGORY {
 		}
 
 		return $content;
+	}
+
+	/**
+	 * Replace a {{ placeholder }} in a template with a literal value.
+	 *
+	 * preg_replace() interprets $1, \1, etc. in the replacement string as backreferences,
+	 * so post content like "$100" would be mangled. Using a callback inserts the value verbatim.
+	 */
+	static function replace_placeholder( $placeholder, $value, $template ) {
+		return preg_replace_callback(
+			'/{{\s*' . preg_quote( $placeholder, '/' ) . '\s*}}/',
+			function ( $matches ) use ( $value ) {
+				return $value;
+			},
+			$template
+		);
 	}
 
 	/**
