@@ -28,6 +28,7 @@ The "Category Templates" page in your dashboard allows you to manage your templa
 
 * Added support for {{ the_date }} placeholder
 * Formategory no longer runs on post excerpts.
+* Fixed a bug that could have left some category templates in the database after uninstalling Formategory.
 
 = 3.2 =
 *Release Date - 2025 April 1*
