@@ -4,7 +4,7 @@
 Plugin Name: Formategory
 Plugin URI: http://www.chrisfinke.com/wordpress/plugins/formategory/
 Description: Formats posts based on their categories.
-Version: 3.3a2
+Version: 3.3a3
 Author: Christopher Finke
 Author URI: http://www.chrisfinke.com/
 Domain Path: /languages/
@@ -85,6 +85,12 @@ class FORMATEGORY {
 		global $post, $wpdb;
 
 		if ( ! $post ) {
+			return $content;
+		}
+
+		// Don't apply templates on excerpts. If a formategory edits the beginning
+		// of a post, every excerpt in that category could look the same.
+		if ( doing_filter( 'get_the_excerpt' ) || doing_filter( 'the_excerpt' ) ) {
 			return $content;
 		}
 

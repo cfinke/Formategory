@@ -1,7 +1,7 @@
 === Formategory ===
 Contributors: cfinke
 Tags: category, template, customization
-Requires at least: 3.6
+Requires at least: 3.9
 Tested up to: 6.7.2
 Stable tag: 3.2
 
@@ -27,6 +27,7 @@ The "Category Templates" page in your dashboard allows you to manage your templa
 *Release Date - TBD*
 
 * Added support for {{ the_date }} placeholder
+* Formategory no longer runs on post excerpts.
 
 = 3.2 =
 *Release Date - 2025 April 1*
