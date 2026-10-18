@@ -3,6 +3,7 @@ Contributors: cfinke
 Tags: category, template, customization
 Requires at least: 3.9
 Tested up to: 6.7.2
+Requires PHP: 5.3
 Stable tag: 3.2
 
 Formats posts based on their category.

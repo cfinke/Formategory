@@ -9,6 +9,8 @@ Author: Christopher Finke
 Author URI: http://www.chrisfinke.com/
 Domain Path: /languages/
 Text Domain: formategory
+Requires at least: 3.9
+Requires PHP: 5.3
 */
 
 define( 'FORMATEGORY_VERSION', '3.3a10' );
