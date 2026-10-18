@@ -2,7 +2,7 @@
 Contributors: cfinke
 Tags: category, template, customization
 Requires at least: 3.9
-Tested up to: 6.7.2
+Tested up to: 7.1.3
 Requires PHP: 5.3
 Stable tag: 3.2
 
