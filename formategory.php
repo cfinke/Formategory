@@ -4,14 +4,14 @@
 Plugin Name: Formategory
 Plugin URI: http://www.chrisfinke.com/wordpress/plugins/formategory/
 Description: Formats posts based on their categories.
-Version: 3.3a8
+Version: 3.3a9
 Author: Christopher Finke
 Author URI: http://www.chrisfinke.com/
 Domain Path: /languages/
 Text Domain: formategory
 */
 
-define( 'FORMATEGORY_VERSION', '3.3a8' );
+define( 'FORMATEGORY_VERSION', '3.3a9' );
 
 class FORMATEGORY {
 
@@ -184,7 +184,7 @@ class FORMATEGORY {
 
 	static function action_links( $links, $file ) {
 		if ( $file == plugin_basename( dirname(__FILE__) . '/formategory.php' ) ) {
-			$links[] = '<a href="edit.php?post_type=formategory_template">' . esc_html__( 'Templates', 'formategory' ) .' </a>';
+			$links[] = '<a href="' . esc_url( admin_url( 'edit.php?post_type=formategory_template' ) ) . '">' . esc_html__( 'Templates', 'formategory' ) . '</a>';
 		}
 
 		return $links;
