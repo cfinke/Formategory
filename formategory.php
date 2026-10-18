@@ -4,7 +4,7 @@
 Plugin Name: Formategory
 Plugin URI: http://www.chrisfinke.com/wordpress/plugins/formategory/
 Description: Formats posts based on their categories.
-Version: 3.3a4
+Version: 3.3a5
 Author: Christopher Finke
 Author URI: http://www.chrisfinke.com/
 Domain Path: /languages/
@@ -62,7 +62,7 @@ class FORMATEGORY {
 	}
 
 	static function admin_enqueue_scripts() {
-		wp_enqueue_script( 'formategory-template-editing', plugins_url( 'js/admin-edit.js', __FILE__ ), 'jquery', FORMATEGORY_VERSION, true );
+		wp_enqueue_script( 'formategory-template-editing', plugins_url( 'js/admin-edit.js', __FILE__ ), array( 'jquery' ), FORMATEGORY_VERSION, true );
 		wp_enqueue_style( 'formategory-admin', plugins_url( 'css/admin.css', __FILE__ ), array(), FORMATEGORY_VERSION );
 	}
 
