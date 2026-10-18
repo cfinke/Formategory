@@ -4,7 +4,7 @@
 Plugin Name: Formategory
 Plugin URI: http://www.chrisfinke.com/wordpress/plugins/formategory/
 Description: Formats posts based on their categories.
-Version: 3.3a3
+Version: 3.3a4
 Author: Christopher Finke
 Author URI: http://www.chrisfinke.com/
 Domain Path: /languages/
@@ -32,7 +32,7 @@ class FORMATEGORY {
 					'view_item' => '',
 					'search_items' => __( 'Search Category Templates', 'formategory' ),
 					'not_found' => __( 'No category templates found', 'formategory' ),
-					'not_found' => __( 'No category templates found in Trash', 'formategory' ),
+					'not_found_in_trash' => __( 'No category templates found in Trash', 'formategory' ),
 				),
 				'show_ui' => true,
 				'supports' => array(
