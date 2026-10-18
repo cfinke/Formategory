@@ -11,7 +11,7 @@ Domain Path: /languages/
 Text Domain: formategory
 */
 
-define( 'FORMATEGORY_VERSION', '3.2' );
+define( 'FORMATEGORY_VERSION', '3.3a6' );
 
 class FORMATEGORY {
 
