@@ -4,7 +4,7 @@
 Plugin Name: Formategory
 Plugin URI: http://www.chrisfinke.com/wordpress/plugins/formategory/
 Description: Formats posts based on their categories.
-Version: 3.3a5
+Version: 3.3a6
 Author: Christopher Finke
 Author URI: http://www.chrisfinke.com/
 Domain Path: /languages/
@@ -166,10 +166,14 @@ class FORMATEGORY {
 	/**
 	 * When displaying the title of a template "post" in the admin, show the categories instead.
 	 */
-	static function template_title( $title, $id ) {
+	static function template_title( $title, $id = 0 ) {
+		if ( ! $id ) {
+			return $title;
+		}
+
 		$post = get_post( $id );
 
-		if ( 'formategory_template' == $post->post_type ) {
+		if ( $post && 'formategory_template' == $post->post_type ) {
 			$categories = wp_get_post_categories( $post->ID, array( 'fields' => 'names' ) );
 
 			return implode( ', ', $categories );
