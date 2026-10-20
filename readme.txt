@@ -4,7 +4,7 @@ Tags: category, template, customization
 Requires at least: 3.9
 Tested up to: 7.1.3
 Requires PHP: 5.3
-Stable tag: 3.2
+Stable tag: 3.3
 
 Formats posts based on their category.
 
@@ -25,14 +25,14 @@ The "Category Templates" page in your dashboard allows you to manage your templa
 == Changelog ==
 
 = 3.3 =
-*Release Date - TBD*
+*Release Date - 19 October 2026*
 
 * Added support for {{ the_date }} placeholder
 * Formategory no longer runs on post excerpts.
 * Fixed a bug that could have left some category templates in the database after uninstalling Formategory.
 
 = 3.2 =
-*Release Date - 2025 April 1*
+*Release Date - 1 April 2025*
 
 * Fixed a bug preventing Formategory from working on a home page with a single post.
 * Fixed a bug preventing linebreaks in templates from being rendered properly.

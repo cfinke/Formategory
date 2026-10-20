@@ -4,7 +4,7 @@
 Plugin Name: Formategory
 Plugin URI: http://www.chrisfinke.com/wordpress/plugins/formategory/
 Description: Formats posts based on their categories.
-Version: 3.3a10
+Version: 3.3
 Author: Christopher Finke
 Author URI: http://www.chrisfinke.com/
 Domain Path: /languages/
@@ -13,7 +13,7 @@ Requires at least: 3.9
 Requires PHP: 5.3
 */
 
-define( 'FORMATEGORY_VERSION', '3.3a10' );
+define( 'FORMATEGORY_VERSION', '3.3' );
 
 class FORMATEGORY {
 
